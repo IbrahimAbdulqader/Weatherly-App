@@ -1,9 +1,7 @@
 import 'dart:ui';
-
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:weather_app/models/weather_model.dart';
-import '../services/weather_service.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:weather_app/cubits/get_weather_cubit.dart';
 
 class SearchPage extends StatelessWidget {
   const SearchPage({super.key});
@@ -52,28 +50,33 @@ class SearchPage extends StatelessWidget {
 
                   child: TextField(
                     onSubmitted: (value) async {
-                      WeatherModel weatherModel = await WeatherService(
-                        Dio(),
-                      ).getCurrentWeather(cityName: value);
+                      var getWeatherCubit = BlocProvider.of<GetWeatherCubit>(
+                        context,
+                      );
+                      getWeatherCubit.getWeather(cityName: value);
+                      Navigator.pop(context);
                     },
+                    style: const TextStyle(color: Colors.white),
 
                     decoration: InputDecoration(
                       labelText: 'Search',
                       labelStyle: const TextStyle(color: Colors.white),
                       suffixIcon: const Icon(Icons.search, color: Colors.white),
                       hintText: 'City Name',
-                      hintStyle: const TextStyle(color: Colors.white),
+                      hintStyle: TextStyle(
+                        color: Colors.white.withValues(alpha: 1),
+                      ),
                       enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(12),
-                        borderSide: const BorderSide(
-                          color: Colors.white,
+                        borderSide: BorderSide(
+                          color: Colors.white.withValues(alpha: 0.4),
                           width: 2,
                         ),
                       ),
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(12),
-                        borderSide: const BorderSide(
-                          color: Colors.white,
+                        borderSide: BorderSide(
+                          color: Colors.white.withValues(alpha: 0.4),
                           width: 2,
                         ),
                       ),
