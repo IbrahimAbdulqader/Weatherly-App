@@ -1,9 +1,8 @@
 import 'package:dio/dio.dart';
+import 'package:weather_app/consts/api_consts.dart';
 
 class CitySuggestionsService {
   final Dio dio;
-  final String baseUrl = 'https://api.weatherapi.com/v1';
-  final String apiKey = '7a826ac52a354785bcf135928250907';
 
   CitySuggestionsService(this.dio);
 
@@ -19,8 +18,13 @@ class CitySuggestionsService {
 
       final List data = response.data;
 
-      final cityNames = data.map((e) => e['name'] as String).toList();
-      final countries = data.map((e) => e['country'] as String).toList();
+      final filteredData = data.where(
+        (e) => !(e['name'] as String).toLowerCase().contains('airport'),
+      );
+
+      final cityNames = filteredData.map((e) => e['name'] as String).toList();
+      final countries =
+          filteredData.map((e) => e['country'] as String).toList();
 
       return {'names': cityNames, 'countries': countries};
     } catch (e) {
