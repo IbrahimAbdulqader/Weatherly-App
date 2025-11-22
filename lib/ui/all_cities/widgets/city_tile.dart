@@ -50,7 +50,7 @@ class _CityTileState extends State<CityTile> {
           SizedBox(
             width: 225.w,
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 CustomText(
@@ -61,7 +61,7 @@ class _CityTileState extends State<CityTile> {
                 Row(
                   children: [
                     SizedBox(
-                      width: 75.w,
+                      width: 85.w,
                       child: CustomRichText(
                         generalTextStyle: TextStyle(
                           color: Colors.white,
@@ -96,11 +96,11 @@ class _CityTileState extends State<CityTile> {
             ),
           ),
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 5.h),
+            padding: EdgeInsets.symmetric(horizontal: 5.w, vertical: 5.h),
             child: VerticalDivider(color: Colors.white, width: 1.w),
           ),
           SizedBox(
-            width: 100.w,
+            width: 115.w,
             child:
                 searchedCitiesList.length == 1 || searchedCitiesList.isEmpty
                     ? Padding(
@@ -108,7 +108,7 @@ class _CityTileState extends State<CityTile> {
                       child: CustomRichText(
                         generalTextStyle: TextStyle(
                           color: Colors.white,
-                          fontSize: 30.sp,
+                          fontSize: 28.sp,
                           fontWeight: FontWeight.w600,
                         ),
                         textChildren: [
@@ -124,9 +124,9 @@ class _CityTileState extends State<CityTile> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Padding(
-                          padding: EdgeInsets.only(left: 5.w),
+                          padding: EdgeInsets.only(left: 10.w),
                           child: SizedBox(
-                            width: 50.w,
+                            width: 55.w,
                             child: Center(
                               child: CustomRichText(
                                 generalTextStyle: TextStyle(
