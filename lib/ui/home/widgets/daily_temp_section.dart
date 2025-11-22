@@ -59,10 +59,11 @@ class DailyTemp extends StatelessWidget {
                         : currentCityData.forecastDates[i] == tomorrow
                         ? 'Tomorrow'
                         : currentCityData.forecastDates[i],
-                    style: TextStyle(color: Colors.white, fontSize: 18.sp),
+                    style: TextStyle(color: Colors.white, fontSize: 16.sp),
                   ),
                   SizedBox(
                     width: 160.w,
+                    height: 25.h,
                     child: Text(
                       currentCityData.weekdaysCondition[i].toLowerCase() ==
                                   'sunny' &&
