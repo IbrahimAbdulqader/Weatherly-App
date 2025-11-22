@@ -31,7 +31,9 @@ class GetWeatherCubit extends Cubit<WeatherState> {
     await HiveServices.hiveDeleteCityName(cityName);
     searchedCitiesList.remove(cityName);
     citiesDataMap.remove(cityName);
-    //await Future.delayed(const Duration(milliseconds: 200));
+    if (currentIndex >= searchedCitiesList.length - 1) {
+      currentIndex = searchedCitiesList.length - 1;
+    }
     emitLoadedState();
   }
 
